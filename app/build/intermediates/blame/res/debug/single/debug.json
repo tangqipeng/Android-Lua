@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/tangqipeng/AndroidStudioProjects/AndroLua-master1/app/build/intermediates/res/merged/debug/drawable-mdpi_icon.png.flat",
+        "source": "/Users/tangqipeng/AndroidStudioProjects/AndroLua-master1/app/src/main/res/drawable-mdpi/icon.png"
+    },
+    {
+        "merged": "/Users/tangqipeng/AndroidStudioProjects/AndroLua-master1/app/build/intermediates/res/merged/debug/drawable-ldpi_icon.png.flat",
+        "source": "/Users/tangqipeng/AndroidStudioProjects/AndroLua-master1/app/src/main/res/drawable-ldpi/icon.png"
+    },
+    {
+        "merged": "/Users/tangqipeng/AndroidStudioProjects/AndroLua-master1/app/build/intermediates/res/merged/debug/drawable-hdpi_icon.png.flat",
+        "source": "/Users/tangqipeng/AndroidStudioProjects/AndroLua-master1/app/src/main/res/drawable-hdpi/icon.png"
+    },
+    {
+        "merged": "/Users/tangqipeng/AndroidStudioProjects/AndroLua-master1/app/build/intermediates/res/merged/debug/layout_main.xml.flat",
+        "source": "/Users/tangqipeng/AndroidStudioProjects/AndroLua-master1/app/src/main/res/layout/main.xml"
+    }
+]

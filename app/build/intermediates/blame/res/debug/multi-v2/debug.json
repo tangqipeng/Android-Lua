@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/tangqipeng/AndroidStudioProjects/AndroLua-master1/app/build/intermediates/res/merged/debug/values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/tangqipeng/AndroidStudioProjects/AndroLua-master1/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "3,2",
+                        "startColumns": "4,4",
+                        "startOffsets": "108,55",
+                        "endColumns": "45,52",
+                        "endOffsets": "149,103"
+                    },
+                    "to": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,101",
+                        "endColumns": "45,52",
+                        "endOffsets": "96,149"
+                    }
+                }
+            ]
+        }
+    ]
+}

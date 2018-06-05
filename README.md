@@ -18,3 +18,24 @@ ndk{
         }
     }
 3.重刷gradle即可
+
+注意：
+ndk-build可能运行失败，要配置环境
+mac:
+mac上的配置，先要打开.bash_profile文件
+如果第一次打开，执行下面的命令：
+1. touch .bash_profile
+2. open -e .bash_profile
+
+如果不是第一次，直接执行 open .bash_profile
+
+在里面加入：
+export NDK_ROOT="/Users/**/Library/Android/sdk/ndk-bundle"
+export PATH=${PATH}:${NDK_ROOT}
+
+保存关闭，重启终端，运行 ndk-build
+
+widows：
+ 进入环境变量的高级配置
+
+ 找到ndk的位置，放入path中就ok

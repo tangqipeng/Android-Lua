@@ -1959,6 +1959,61 @@ JNIEXPORT void JNICALL Java_org_keplerproject_luajava_LuaState__1openPackage
 
 
 /************************************************************************
+ *   JNI Called function
+ *      Lua Exported Function
+ ************************************************************************/
+
+ JNIEXPORT void JNICALL Java_org_keplerproject_luajava_LuaState__1aographSensor
+   (JNIEnv * env, jobject jobj)
+ {
+    //lua_State * L = getStateFromCPtr( env , cptr );
+
+    jclass tempClass = ( *env )->FindClass( env , "org/keplerproject/luajava/AographSensor" );
+
+    if(tempClass==0){
+        return;
+    }
+
+    jmethodID method1 = ( *env )->GetStaticMethodID( env , tempClass , "registerSensorListener", "()V");
+    if(method1==0){
+        return;
+    }
+
+    (*env)->CallStaticVoidMethod(env,tempClass,method1);
+
+    //luaopen_aograph( L );
+    //lua_pushcfunction( L , luaopen_aograph );
+    //lua_pushstring( L , LUA_AOGRAPHNAME );
+    //lua_call(L , 1 , 0 );
+ }
+
+
+/************************************************************************
+*   JNI Called function
+*      Lua Exported Function
+************************************************************************/
+
+JNIEXPORT void JNICALL Java_org_keplerproject_luajava_LuaState__1openSensor
+  (JNIEnv * env, jobject jobj, jint t)
+{
+   //lua_State * L = getStateFromCPtr( env , cptr );
+
+   jclass tempClass = ( *env )->FindClass( env , "org/keplerproject/luajava/AographSensor" );
+
+   if(tempClass==0){
+       return;
+   }
+
+   jmethodID method1 = ( *env )->GetStaticMethodID( env , tempClass , "openSensor", "()V");
+   if(method1==0){
+       return;
+   }
+
+   (*env)->CallStaticVoidMethod(env,tempClass,method1,t);
+
+}
+
+/************************************************************************
 *   JNI Called function
 *      Lua Exported Function
 ************************************************************************/

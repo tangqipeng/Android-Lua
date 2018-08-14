@@ -25,7 +25,7 @@ import android.widget.Toast;
 
 public class Main extends Activity implements OnClickListener,
 		OnLongClickListener {
-	private final static int LISTEN_PORT = 3333;
+	private final static int LISTEN_PORT = 8080;
 
 	Button execute;
 	
@@ -60,7 +60,24 @@ public class Main extends Activity implements OnClickListener,
 
 		source = (EditText) findViewById(R.id.source);
 		source.setOnLongClickListener(this);
-		source.setText("require 'import'\nprint(Math:sin(2.3))\n");
+//		source.setText("require 'import'\nprint(Math:sin(2.3))\n");
+
+		String s7 = "function FileRead()\n" +
+				"    local file = io.open(\"test.json\",\"r\")\n" +
+				"    local json = file:read(\"*a\");\n" +
+				"    file:close()\n" +
+				"    return json\n" +
+				"end\n" +
+				"local cjson = require \"cjson\"\n" +
+				"local file = FileRead()\n" +
+				"local json = cjson.decode(file)\n" +
+				"\n" +
+				"for i,w in ipairs(json.configs) do\n" +
+				"    print(\"user:\"..w.user)\n" +
+				"    print(\"password:\"..w.password)\n" +
+				"end";
+
+		source.setText(s7);
 
 		status = (TextView) findViewById(R.id.statusText);
 		status.setMovementMethod(ScrollingMovementMethod.getInstance());
@@ -91,11 +108,11 @@ public class Main extends Activity implements OnClickListener,
 							val = L.toString(i);
 						}
 						if (val == null)
-							val = stype;						
+							val = stype;
 						output.append(val);
 						output.append("\t");
 					}
-					output.append("\n");					
+					output.append("\n");
 					return 0;
 				}
 			};
@@ -120,15 +137,15 @@ public class Main extends Activity implements OnClickListener,
 					}
 				}
 			};
-			
+
 			L.getGlobal("package");            // package
 			L.getField(-1, "loaders");         // package loaders
 			int nLoaders = L.objLen(-1);       // package loaders
-			
+
 			L.pushJavaFunction(assetLoader);   // package loaders loader
 			L.rawSetI(-2, nLoaders + 1);       // package loaders
 			L.pop(1);                          // package
-						
+
 			L.getField(-1, "path");            // package path
 			String customPath = getFilesDir() + "/?.lua";
 			L.pushString(";" + customPath);    // package path custom
@@ -150,7 +167,18 @@ public class Main extends Activity implements OnClickListener,
 	@Override
 	protected void onPause() {
 		super.onPause();
-		serverThread.stopped = true;
+		try {
+
+			if (serverThread != null) {
+				serverThread.stopped = true;
+//				serverThread.interrupt();
+//				serverThread.stop();
+//				serverThread.join();
+				serverThread = null;
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 	}
 
 	private class ServerThread extends Thread {
@@ -198,7 +226,8 @@ public class Main extends Activity implements OnClickListener,
 				}
 				server.close();
 			} catch (Exception e) {
-				show(e.toString());
+				e.printStackTrace();
+				show("ServerThread="+e.toString());
 			}
 		}
 

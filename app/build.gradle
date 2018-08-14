@@ -1,19 +1,21 @@
 apply plugin: 'com.android.application'
-
 android {
-    compileSdkVersion 10
+    compileSdkVersion 27
     buildToolsVersion "27.0.3"
 
     defaultConfig {
         applicationId "sk.kottman.androlua"
-        minSdkVersion 4
-        targetSdkVersion 4
-        ndk{
+        minSdkVersion 14
+        targetSdkVersion 27
+        ndk {
             abiFilters "armeabi", "armeabi-v7a", "armeabi-v8a", "x86", "x86_64"
         }
     }
 
     buildTypes {
+        debug {
+            jniDebuggable true //此句不加在真机上 debug 不受影响，但是在虚拟机上不能 debug
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
@@ -25,4 +27,11 @@ android {
             jni.srcDirs = []
         }
     }
+}
+//dependencies {
+//    implementation 'com.android.support:appcompat-v7:27.0.3'
+//}
+
+dependencies {
+    implementation 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
 }

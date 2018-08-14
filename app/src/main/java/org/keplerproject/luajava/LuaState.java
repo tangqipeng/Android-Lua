@@ -24,6 +24,8 @@
 
 package org.keplerproject.luajava;
 
+import android.content.Context;
+
 /**
  * LuaState if the main class of LuaJava for the Java developer.
  * LuaState is a mapping of most of Lua's C API functions.
@@ -90,7 +92,11 @@ public class LuaState
   static
   {
     System.loadLibrary(LUAJAVA_LIB);
+//    nativeInit();
   }
+
+
+  public native static void nativeInit(Context context);
 
   private CPtr luaState;
 
@@ -297,6 +303,8 @@ public class LuaState
   private synchronized native void _openMath(CPtr ptr);
   private synchronized native void _openDebug(CPtr ptr);
   private synchronized native void _openPackage(CPtr ptr);
+  private synchronized native void _aographSensor();
+  private synchronized native void _openSensor(int t);
   private synchronized native void _openLibs(CPtr ptr);
 
   // Java Interface -----------------------------------------------------
@@ -827,6 +835,14 @@ public class LuaState
   public void openPackage()
   {
 	  _openPackage(luaState);
+  }
+  public void aographSensor()
+  {
+    _aographSensor();
+  }
+  public void openSensor(int t)
+  {
+    _openSensor(t);
   }
   public void openLibs()
   {

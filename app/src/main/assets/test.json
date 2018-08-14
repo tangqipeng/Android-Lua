@@ -1,0 +1,14 @@
+{
+    "str":"hello world",
+    "configs":[{
+        "user":"ubuntu",
+        "password":"123456",
+        "ip":"192.168.1.12"
+    },
+    {
+        "user":"ubuntu1",
+        "password":"45678",
+        "ip":"192.168.1.23"
+    }
+    ]
+}

@@ -3,6 +3,9 @@ lua脚本在Android中运行
 
 这是一个Android studio下运行的项目；
 查看jniLibs下是否有libluajava.so文件，没有的话用命令进入jni文件夹：如果是Android studio的项目的话运行下面的语句：
+
+重点--------，要先进入jni
+
 先：cd app/src/main/jni
 再：ndk-build
 当运行完时，会发现在main下面会有obj文件夹和libs文件夹，这是运行ndk生成的libluajava.so文件，将libs下的文件夹拷贝到jniLibs下
